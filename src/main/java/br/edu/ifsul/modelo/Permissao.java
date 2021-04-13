@@ -30,8 +30,8 @@ public class Permissao implements Serializable
     private String nome;
     
     @NotBlank(message = "A descrição da permissão deve ser informado.")
-    @Length(max = 40, message = "A descrição não deve ter mais que {max} caracteres.")
-    @Column(name = "descricao", length = 40, nullable = false)
+    @Length(max = 100, message = "A descrição não deve ter mais que {max} caracteres.")
+    @Column(name = "descricao", length = 100, nullable = false)
     private String descricao;
 
     public Permissao() {

@@ -6,8 +6,10 @@
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
@@ -34,6 +36,7 @@ import org.hibernate.validator.constraints.Length;
 public class Usuario implements Serializable {
     
     @Id
+    @NotNull(message = "O nome de usuario não pode ser nulo")
     @NotBlank(message = "O nome do usuário deve ser informado.")
     @Length(max = 20, message = "O nome de usuário não pode ter mais que {max} caracteres.")
     @Column(name = "nome_usuario", length = 20, nullable = false)
@@ -55,7 +58,7 @@ public class Usuario implements Serializable {
     @Column(name = "email", length = 50, nullable = false)
     private String email;
     
-    @NotNull(message = "O campo ativo deve ser informdo.")
+    @NotNull(message = "O campo ativo deve ser informado.")
     @Column(name = "ativo", nullable = false)
     private Boolean ativo;
     
@@ -121,7 +124,7 @@ public class Usuario implements Serializable {
     public void setDataCadastro(Calendar dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
-
+    
     public Set<Permissao> getPermissoes() {
         return permissoes;
     }
@@ -130,8 +133,6 @@ public class Usuario implements Serializable {
         this.permissoes = permissoes;
     }
     
-    
-
     @Override
     public int hashCode() {
         int hash = 7;
